@@ -3,6 +3,8 @@ var swig = require( 'swig' );
 var app = express(); // creates an instance of an express application
 var routes = require("./routes/");
 
+console.log("Heeeeey");
+
 app.use("/", routes);
 app.use(express.static("public"));
 
@@ -30,6 +32,7 @@ var locals = {
         { name: 'Hermione'}
     ]
 };
+
 swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) {
     console.log(output);
 });

@@ -40,5 +40,5 @@ for (var i = 0; i < 10; i++) {
 }
 
 // console.log(data);
-add("Ashley", "fantastic");
-console.log(list());
+// add("Ashley", "fantastic");
+// console.log(list());
