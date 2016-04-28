@@ -1,11 +1,15 @@
 var express = require( 'express' );
 var swig = require( 'swig' );
 var app = express(); // creates an instance of an express application
+var server = app.listen(3000);
+var socketio = require('socket.io');
+var io = socketio.listen(server);
+
+
+
 var routes = require("./routes/");
 
-console.log("Heeeeey");
-
-app.use("/", routes);
+app.use("/", routes(io));
 app.use(express.static("public"));
 
 app.engine('html', swig.renderFile);
@@ -19,10 +23,6 @@ app.get('/', function(req, res) {
 	//res.send('Hello World!');
 });
 
-app.listen(3000, function() {
-	console.log("Hey Ashley & Kathy!");
-});
-
 // in some file that is in the root directory of our application
 var locals = {
     title: 'An Example',
@@ -34,5 +34,6 @@ var locals = {
 };
 
 swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) {
-    console.log(output);
+    // console.log(output);
 });
+
