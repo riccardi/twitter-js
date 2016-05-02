@@ -88,13 +88,19 @@
     console.log('connected to server via WebSockets!');
   });
   // When 'new_tweet' events are fired, do something with the packaged tweet
-  socket.on('new_tweet', function (tweet) { 
+  socket.on('new_tweet', function (tweet) {
+    var tweetList = document.getElementById("tweets");
     var li = document.createElement("LI");
-    var textNode = document.createTextNode(tweet.name + " " + tweet.text);
-    li.appendChild(textNode);
-    document.getElementById("tweets").appendChild(li);
+    // var img = document.createElement("IMG");
+    // img.src=tweet.pic;
+    li.innerHTML = `<img src="${tweet.pictureurl}"><a href="/users/${tweet.userId}"><strong>${tweet.name}</strong></a><br>${tweet.text}`;
+    // var textNode = document.createTextNode(tweet.name + " " + tweet.text);
+    // li.appendChild(img);
+    tweetList.appendChild(li);
+
+    //document.getElementById("tweets").appendChild(li);
     console.log(tweet);
-    alert('Refreshing... check the console...');
+    //alert('Refreshing... check the console...');
     // some logic to add the new tweet to the DOM…
   }); 
 </script>

@@ -16,10 +16,10 @@
 
 
       <ul id="tweets">
+      <!-- {{tweet.name}} = interpolation -->
       <!-- display tweets here -->
       {% for tweet in tweets %}
-
-        <li><a href="/users/{{tweet.name}}"><strong>{{tweet.name}}</strong></a><br>{{tweet.text}}</li>
+        <li><img src="{{tweet.pictureurl}}"><a href="/users/{{tweet.userid}}"><strong>{{tweet.name}}</strong></a><br>{{tweet.content}}</li>
       {% endfor %}
 
       </ul>

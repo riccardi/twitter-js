@@ -61,5 +61,6 @@ code {
 li {
   list-style: none;
   margin-bottom: 20px;
-  
 }
+
+li img { max-width: 50px; vertical-align: bottom; margin-right:5px; }
