@@ -19,7 +19,7 @@
       <!-- {{tweet.name}} = interpolation -->
       <!-- display tweets here -->
       {% for tweet in tweets %}
-        <li><img src="{{tweet.pictureurl}}"><a href="/users/{{tweet.userid}}"><strong>{{tweet.name}}</strong></a><br>{{tweet.content}}</li>
+        <li><img src="{{tweet.pictureurl}}"><a href="/users/{{tweet.userid}}"><strong>{{tweet.name}}</strong></a><br>{% autoescape false %}{{tweet.content}}{% endautoescape %}</li>
       {% endfor %}
 
       </ul>
