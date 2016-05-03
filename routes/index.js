@@ -117,11 +117,13 @@ module.exports = function(io, client) {
             for (var i = 0; i < tagArr.length; i++) {
                 // does this hashtag exist?
                 (function(i){
+                //This is ASYNC
                 client.query('SELECT * FROM hashtags WHERE tag=$1', [tagArr[i]], function(err, result) {
-                        // if the user already exists
+                        // if the hashtag already exists
                         if (result.rows.length > 0) {
-                            
+                                console.log(numArr);
                                 numArr.push(+result.rows[0].id); 
+                                console.log(numArr);
                            
                             
                         }else{
@@ -134,9 +136,12 @@ module.exports = function(io, client) {
                                 });
                             });
                         }
+                        console.log("numArr", numArr);
                 });
+                // return [tagArr, numArr];
              })(i);
             }
+            console.log("are we getting here");
             console.log(tagArr, numArr);
 
             return [tagArr, numArr];
